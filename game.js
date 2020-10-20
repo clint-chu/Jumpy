@@ -10,6 +10,10 @@ document.addEventListener('DOMContentLoaded', () => {
     let platforms = [];
     let upTimerId
     let downTimerId
+    let isGoingLeft = false;
+    let isGoingRight = false;
+    let leftTimerId
+    let rightTimerId
 
     function createJumper() {
         grid.appendChild(jumper);
@@ -100,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
         clearInterval(downTimerId);
     };
 
-    function control() {
+    function control(e) {
         if (e.key === 'ArrowLeft') {
             moveLeft();
         } else if (e.key === 'ArrowRight') {
@@ -110,12 +114,24 @@ document.addEventListener('DOMContentLoaded', () => {
         };
     };
 
+    function moveLeft() {
+        isGoingLeft = true;
+
+        leftTimerId = setInterval(function () {
+            jumperLeft -= 5;
+            jumper.style.left = jumperLeft + 'px';
+        }, 30);
+    };
+
+
+
     function start() {
         if (!isGameOver) {
             createPlatforms();
             createJumper();
             setInterval(movePlatforms, 30);
             jump();
+            document.addEventListener('keyup', control);
         };
     };
 
