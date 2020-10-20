@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
         upTimerId = setInterval(function () {
             jumperBottom += 20;
             jumper.style.bottom = jumperBottom + 'px';
-            if (jumperBottom > 350) {
+            if (jumperBottom > startPoint + 200) {
                 fall();
             };
         }, 30);
@@ -102,11 +102,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function control() {
         if (e.key === 'ArrowLeft') {
-            // move left
+            moveLeft();
         } else if (e.key === 'ArrowRight') {
-            // move right
+            moveRight();
         } else if (e.key === "arrowUp") {
-            // move straight
+            moveStraight();
         };
     };
 
