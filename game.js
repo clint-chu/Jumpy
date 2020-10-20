@@ -1,12 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
     const grid = document.querySelector('.grid');
     const jumper = document.createElement('div');
+    let startPoint = 150;
     let jumperLeft = 50;
-    let jumperBottom = 50;
+    let jumperBottom = startPoint;
+    let isJumping = false; // maybe init this as true
+    let isGameOver = false;
     let platformCount = 5;
     let platforms = [];
-    let isJumping = false;
-    let isGameOver = false;
     let upTimerId
     let downTimerId
 
@@ -85,6 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     (jumper <= (platform.left + 85)) &&
                     (!isJumping)
                     ) {
+                        startPoint = jumperBottom;
                         jump();
                 };
             });
