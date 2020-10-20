@@ -111,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function gameOver() {
         isGameOver = true;
         while (grid.firstChild) {
-            grid.remove(grid.firstChild);
+            grid.removeChild(grid.firstChild);
         };
         grid.innerHTML = score;
         clearInterval(upTimerId);
@@ -125,7 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
             moveLeft();
         } else if (e.key === 'ArrowRight') {
             moveRight();
-        } else if (e.key === "ArrowUp") {
+        } else if (e.key === 'ArrowUp') {
             moveStraight();
         };
     };
