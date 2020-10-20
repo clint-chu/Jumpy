@@ -110,6 +110,8 @@ document.addEventListener('DOMContentLoaded', () => {
         isGameOver = true;
         clearInterval(upTimerId);
         clearInterval(downTimerId);
+        clearInterval(leftTimerId);
+        clearInterval(rightTimerId);
     };
 
     function control(e) {
@@ -161,8 +163,6 @@ document.addEventListener('DOMContentLoaded', () => {
         isGoingLeft = false;
         clearInterval(rightTimerId);
         clearInterval(leftTimerId);
-        clearInterval(leftTimerId);
-        clearInterval(rightTimerId);
     };
 
     function start() {
