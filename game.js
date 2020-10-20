@@ -133,19 +133,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function moveRight() {
         if (isGoingLeft) {
-            clearInterval(LeftTimerId);
+            clearInterval(leftTimerId);
             isGoingLeft = false;
         };
 
         isGoingRight = true;
         rightTimerId = setInterval(function () {
             if (jumperLeft <= 340) {
-                jumperLeft += 5
+                jumperLeft += 5;
                 jumper.style.left = jumperLeft + 'px';
             } else {
                 moveLeft();
             }
         }, 30);
+    };
+
+    function moveStraight() {
+        isGoingRight = false;
+        isGoingLeft = false;
+        clearInterval(rightTimerId);
+        clearInterval(leftTimerId);
     };
 
     function start() {
