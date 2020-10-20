@@ -127,7 +127,17 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 30);
     };
 
-
+    function moveRight() {
+        isGoingRight = true;
+        rightTimerId = setInterval(function () {
+            if (jumperLeft <= 340) {
+                jumperLeft += 5
+                jumper.style.left = jumperLeft + 'px';
+            } else {
+                moveLeft();
+            }
+        }, 30);
+    };
 
     function start() {
         if (!isGameOver) {
