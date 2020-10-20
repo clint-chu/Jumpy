@@ -8,12 +8,13 @@ document.addEventListener('DOMContentLoaded', () => {
     let isGameOver = false;
     let platformCount = 5;
     let platforms = [];
-    let upTimerId
-    let downTimerId
+    let upTimerId;
+    let downTimerId;
     let isGoingLeft = false;
     let isGoingRight = false;
-    let leftTimerId
-    let rightTimerId
+    let leftTimerId;
+    let rightTimerId;
+    let score = 0;
 
     function createJumper() {
         grid.appendChild(jumper);
@@ -58,6 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     let firstPlatform = platforms[0].visual;
                     firstPlatform.classList.remove('platform');
                     platforms.shift();
+                    score++;
                     let newPlatform = new Platform(600);
                     platforms.push(newPlatform);
                 };
@@ -108,6 +110,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function gameOver() {
         isGameOver = true;
+        while (grid.firstChild) {
+            grid.remove(grid.firstChild);
+        };
+        grid.innerHTML = score;
         clearInterval(upTimerId);
         clearInterval(downTimerId);
         clearInterval(leftTimerId);
@@ -138,7 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 moveRight();
             }
-        }, 30);
+        }, 20);
     };
 
     function moveRight() {
@@ -155,7 +161,7 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 moveLeft();
             }
-        }, 30);
+        }, 20);
     };
 
     function moveStraight() {
