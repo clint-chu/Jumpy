@@ -115,8 +115,12 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     function moveLeft() {
-        isGoingLeft = true;
+        if (isGoingRight) {
+            clearInterval(rightTimerId);
+            isGoingRight = false;
+        };
 
+        isGoingLeft = true;
         leftTimerId = setInterval(function () {
             if (jumperLeft >= 0) {
                 jumperLeft -= 5;
@@ -128,6 +132,11 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     function moveRight() {
+        if (isGoingLeft) {
+            clearInterval(LeftTimerId);
+            isGoingLeft = false;
+        };
+
         isGoingRight = true;
         rightTimerId = setInterval(function () {
             if (jumperLeft <= 340) {
