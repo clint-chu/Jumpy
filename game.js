@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let startPoint = 150;
     let jumperLeft = 50;
     let jumperBottom = startPoint;
-    let isJumping = false; // maybe init this as true
+    let isJumping = true;
     let isGameOver = false;
     let platformCount = 5;
     let platforms = [];
@@ -118,8 +118,12 @@ document.addEventListener('DOMContentLoaded', () => {
         isGoingLeft = true;
 
         leftTimerId = setInterval(function () {
-            jumperLeft -= 5;
-            jumper.style.left = jumperLeft + 'px';
+            if (jumperLeft >= 0) {
+                jumperLeft -= 5;
+                jumper.style.left = jumperLeft + 'px';
+            } else {
+                moveRight();
+            }
         }, 30);
     };
 
