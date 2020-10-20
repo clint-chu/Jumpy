@@ -68,13 +68,27 @@ document.addEventListener('DOMContentLoaded', () => {
     function fall() {
         clearInterval(upTimerId);
         isJumping = false;
-        
+
         downTimerId = setInterval(function () {
             jumperBottom -= 5;
             jumper.style.bottom = jumperBottom + 'px';
+
             if (jumperBottom <= 0) {
                 gameOver();
             };
+
+            platforms.forEach(platform => {
+                if (
+                    (jumperBottom >= platform.bottom) &&
+                    (jumperBottom <= platform.bottom + 15) &&
+                    ((jumperLeft + 60) >= platform.left) &&
+                    (jumper <= (platform.left + 85)) &&
+                    (!isJumping)
+                    ) {
+                        jump();
+                };
+            });
+
         }, 30);
     };
 
