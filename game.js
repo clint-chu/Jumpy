@@ -52,7 +52,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function jump() {
         upTimerId = setInterval(function () {
-            
+            jumperBottom += 20;
+            jumper.style.bottom = jumperBottom + 'px';
         }, 30);
     };
 
@@ -61,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
             createJumper();
             createPlatforms();
             setInterval(movePlatforms, 30);
-            jumper();
+            jump();
         };
     };
 
