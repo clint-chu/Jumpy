@@ -4,3 +4,17 @@
     background-color: #9fa7e4;
     position: relative;
 }
+
+.jumper {
+    width: 60px;
+    height: 85px;
+    background-color: #e097db;
+    position: absolute;
+}
+
+.platform {
+    width: 85px;
+    height: 15px;
+    background-color: #feef4d;
+    position: absolute;
+}
