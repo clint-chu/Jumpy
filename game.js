@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let jumperLeft = 50;
     let jumperBottom = 150;
     let platformCount = 5;
+    let platforms = [];
     let isGameOver = false;
 
     function createJumper() {
@@ -32,6 +33,8 @@ document.addEventListener('DOMContentLoaded', () => {
             let platformGap = 600 / platformCount;
             let newPlatformBottom = 100 + i * platformGap;
             let newPlatform = new Platform(newPlatformBottom);
+
+            platforms.push(newPlatform);
         };
     };
 
