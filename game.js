@@ -2,10 +2,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const grid = document.querySelector('.grid');
     const jumper = document.createElement('div');
     let jumperLeft = 50;
-    let jumperBottom = 150;
+    let jumperBottom = 50;
     let platformCount = 5;
     let platforms = [];
     let isGameOver = false;
+    let upTimerId
+    let downTimerId
 
     function createJumper() {
         grid.appendChild(jumper);
@@ -38,10 +40,28 @@ document.addEventListener('DOMContentLoaded', () => {
         };
     };
 
+    function movePlatforms() {
+        if (jumperBottom > 200) {
+            platforms.forEach(platform => {
+                platform.bottom -= 4;
+                let visual = platform.visual;
+                visual.style.bottom = platform.bottom +  'px';
+            });
+        };
+    };
+
+    function jump() {
+        upTimerId = setInterval(function () {
+            
+        }, 30);
+    };
+
     function start() {
         if (!isGameOver) {
             createJumper();
             createPlatforms();
+            setInterval(movePlatforms, 30);
+            jumper();
         };
     };
 
